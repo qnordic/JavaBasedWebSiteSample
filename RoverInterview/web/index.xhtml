@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:b="http://bootsfaces.net/ui" >
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" />
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+
+    <title>Rover Reviews</title>
+</h:head>
+
+<h:body>
+    <b:container fluid="true">
+        <b:row>
+            <b:column span="4">
+                <h2>Sitter Reviews</h2>
+            </b:column>
+        </b:row>
+        <b:row>
+            <b:column span="12" />
+        </b:row>
+        <b:dataTable value="#{allSittersController.sitters}" id="sitterTable" var="sitter" bootstrapHover="true" bootstrapResponsive="true" >
+            <b:dataTableColumn searchable="false" >
+                <f:facet name="header">Image</f:facet>
+                <b:image value="#{sitter.getImageUrl()}" height="50px" />
+            </b:dataTableColumn>
+            <b:dataTableColumn>
+                <f:facet name="header">Name</f:facet>
+                #{sitter.getName()}
+            </b:dataTableColumn>
+            <b:dataTableColumn order="desc" dataOrder="#{sitter.getOverallSitterRank()}" >
+                <f:facet name="header">Rating</f:facet>
+                #{sitter.getRatingScore()}
+            </b:dataTableColumn>
+        </b:dataTable>
+    </b:container>
+</h:body>
+</html>
